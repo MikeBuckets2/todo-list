@@ -76,21 +76,27 @@ function createTodoHeader(todo, index) {
     )})`;
 
     header.appendChild(title);
-    header.appendChild(createDeleteButton(index));
+    header.appendChild(createDeleteButton(todo));
     header.appendChild(createExpandButton(todo));
 
     return header;
 }
 
-function createDeleteButton(index) {
+function createDeleteButton(todo) {
     const btn = document.createElement('button');
     btn.textContent = 'Delete';
 
     btn.addEventListener('click', e => {
         e.stopPropagation();
-        getCurrentProject(),removeTodo(index);
-        saveApp();
-        render();
+
+        const project = getCurrentProject();
+        const todoIndex = project.todos.indexOf(todo);
+
+        if (todoIndex > -1) {
+            project.removeTodo(todoIndex);
+            saveApp();
+            render();
+        }
     });
 
     return btn;
