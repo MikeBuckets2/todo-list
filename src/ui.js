@@ -78,25 +78,6 @@ function createTodoHeader(todo, index) {
     return header;
 }
 
-function renderTodoForm() {
-    const form = document.createElement('form');
-
-    form.innerHTML = `
-    <input name ="title" placeholder="Title required />
-    <input type="date" name="dueDate" required /> 
-    <select name="priority">
-        <option>Low</option>
-        <option>Medium</option>
-        <option>High</option>
-    </select>
-    <button>Add</button>
-    `;
-
-    form.addEventListener('submit', handleTodoSubmit);
-
-    return form;
-}
-
 function createDeleteButton(index) {
     const btn = document.createElement('button');
     btn.textContent = 'Delete';
@@ -131,6 +112,7 @@ function renderTodoDetails(todo) {
     checkbox.addEventListener('change', () => {
         todo.toggleComplete();
         saveApp();
+        render();
     });
 
     const priority = document.createElement('select');
@@ -150,6 +132,25 @@ function renderTodoDetails(todo) {
 
     details.append(checkbox, priority);
     return details;
+}
+
+function renderTodoForm() {
+    const form = document.createElement('form');
+
+    form.innerHTML = `
+    <input name ="title" placeholder="Title required />
+    <input type="date" name="dueDate" required /> 
+    <select name="priority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+    </select>
+    <button>Add</button>
+    `;
+
+    form.addEventListener('submit', handleTodoSubmit);
+
+    return form;
 }
 
 function handleTodoSubmit(e) {
