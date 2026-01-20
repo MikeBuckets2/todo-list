@@ -19,12 +19,7 @@ h1 {
     gap: 16px;
 }
 
-.sidebar {
-    background: white;
-    padding: 12px;
-    border-radius: 6px;
-}
-
+.sidebar, 
 .main {
     background: white;
     padding: 12px;
