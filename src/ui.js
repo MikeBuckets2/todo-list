@@ -104,6 +104,36 @@ function createExpandButton(todo) {
     return btn;
 }
 
+function renderTodoDetails(todo) {
+    const details = document.createElement('div');
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = todo.completed;
+    checkbox.addEventListener('change', () => {
+        todo.toggleComplete();
+        saveApp();
+    });
+
+    const priority = document.createElement('select');
+    ['Low', 'Medium', 'High'].forEach(level => {
+        const option = document.createElement('option');
+        option.value = level;
+        option.textContent = level;
+        option.selected = todo.priority === level;
+        priority.appendChild(option);
+    });
+
+    priority.addEventListener('change', e => {
+        todo.updatePriority(e.target.value);
+        saveApp();
+        render();
+    });
+
+    details.append(checkbox, priority);
+    return details;
+}
+
 function handleTodoSubmit(e) {
     e.preventDefault();
 
