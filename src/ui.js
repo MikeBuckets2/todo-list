@@ -62,6 +62,22 @@ function renderTodos() {
     return container;
 }
 
+function createTodoHeader(todo, index) {
+    const header = document.createElement('div');
+
+    const title = document.createElement('span');
+    title.textContent = `${todo.title} (${format(
+        new Date(todo.dueDate), 
+        'MMM dd'
+    )})`;
+
+    header.appendChild(title);
+    header.appendChild(createDeleteButton(index));
+    header.appendChild(createExpandButton(todo));
+
+    return header;
+}
+
 function renderTodoForm() {
     const form = document.createElement('form');
 
@@ -79,22 +95,6 @@ function renderTodoForm() {
     form.addEventListener('submit', handleTodoSubmit);
 
     return form;
-}
-
-function createTodoHeader(todo, index) {
-    const header = document.createElement('div');
-
-    const title = document.createElement('span');
-    title.textContent = `${todo.title} (${format(
-        new Date(todo.dueDate), 
-        'MMM dd'
-    )})`;
-
-    header.appendChild(title);
-    header.appendChild(createDeleteButton(index));
-    header.appendChild(createExpandButton(todo));
-
-    return header;
 }
 
 function createDeleteButton(index) {
