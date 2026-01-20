@@ -44,3 +44,11 @@ h1 {
 .project-btn:hover {
     background: #ddd;
 }
+
+.todo {
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background: #fafafa;
+}
