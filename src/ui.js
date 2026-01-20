@@ -73,11 +73,13 @@ function renderProjects() {
       delBtn.classList.add('project-delete-btn');
       delBtn.addEventListener('click', e => {
         e.stopPropagation();
+
+        if (getProjects().length <= 1) return;
+
         getProjects().splice(index, 1);
 
-        if (getCurrentProject() === project) {
-          setCurrentProject(0);
-        }
+        const newCurrentIndex = index === 0 ? 0 : Math.max(0, index - 1);
+        setCurrentProject(newCurrentIndex);
 
         saveApp();
         render();
