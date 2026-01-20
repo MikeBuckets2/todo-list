@@ -12,15 +12,41 @@ function render() {
 }
 
 function renderProjects() {
-    appDiv.innerHTML = '';
+    const container = document.createElement('div');
 
     getProjects().forEach((project, index) => {
-        const div = document.createElement('div');
-        div.textContent = project.name;
-        div.dataset.index = index;
-        appDiv.appendChild(div);
+        const btn = document.createElement('button');
+        btn.textContent = project.name;
+
+        btn.addEventListener('click', () => {
+            setCurrentProject(index);
+            render();
+        });
+
+        container.appendChild(btn);
     });
-};
+
+    return container;
+}
+
+function renderTodoForm() {
+    const form = document.createElement('form');
+
+    form.innerHTML = `
+    <input name ="title" placeholder="Title required />
+    <input type="date" name="dueDate" required /> 
+    <select name="priority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+    </select>
+    <button>Add</button>
+    `;
+
+    form.addEventListener('submit', handleTodoSubmit);
+
+    return form;
+}
 
 function renderTodos(project) {
     project.todos.forEach(todo => {
