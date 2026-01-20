@@ -1,7 +1,15 @@
-import {getProjects} from "./app.js";
+import {setCurrentProject, getCurrentProject, getProjects} from "./app.js";
 import {format} from 'date-fns';
 
-const appDiv = document.querySelector('#app');
+const app = document.querySelector('#app');
+
+function render() {
+    app.innerHTML = '';
+
+    app.appendChild(renderProjects());
+    app.appendChild(renderTodoForm());
+    app.appendChild(renderTodos());
+}
 
 function renderProjects() {
     appDiv.innerHTML = '';
@@ -24,4 +32,4 @@ function renderTodos(project) {
     });
 }
 
-export {renderProjects};
+export {render};
