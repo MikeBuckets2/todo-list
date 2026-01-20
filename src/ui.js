@@ -1,4 +1,5 @@
-import {setCurrentProject, getCurrentProject, getProjects} from "./app.js";
+import {setCurrentProject, getCurrentProject, getProjects, saveApp} from "./app.js";
+import {createTodo} from './todo.js';
 import {format} from 'date-fns';
 
 const app = document.querySelector('#app');
@@ -56,6 +57,23 @@ function renderTodos(project) {
             appDiv.appendChild(div);
         });
     });
+}
+
+function handleTodoSubmit(e) {
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+
+    const todo = createTodo(
+        data.get('title'),
+        '',
+        data.get('dueDate'),
+        data.get('priority')
+    );
+
+    getCurrentProject().addTodo(todo);
+    saveApp();
+    render();
 }
 
 export {render};
