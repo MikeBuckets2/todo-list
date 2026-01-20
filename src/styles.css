@@ -113,6 +113,12 @@ h1 {
     align-items: center;
 }
 
+.todo-description {
+    margin: 6px 0;
+    font-style: italic;
+    color: #555;
+}
+
 form {
     display: flex;
     gap: 8px;

@@ -197,14 +197,9 @@ function renderTodoDetails(todo) {
         render();
     });
 
-    const desc = document.createElement('textarea');
-    desc.value = todo.description || '';
-    desc.placeholder = 'Description...';
-    desc.rows = 3;
-    desc.addEventListener('input', e => {
-        todo.description = e.target.value;
-        saveApp();
-    });
+    const desc = document.createElement('p');
+    desc.textContent = todo.description || '';
+    desc.classList.add('todo-description');
 
     details.append(checkbox, priority, desc);
     return details;
