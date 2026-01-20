@@ -43,6 +43,25 @@ function renderProjects() {
     return container;
 }
 
+function renderTodos() {
+    const container = document.createElement('div');
+    const project = getCurrentProject();
+
+    project.todos.forEach((todo, index) => {
+        const div = document.createElement('div');
+        div.classList.add('todo', todo.priority.toLowerCase());
+        
+        if (todo.completed) {
+            div.classList.add('completed');
+        }
+
+        div.appendChild(createTodoHeader(todo, index));
+        container.appendChild(div);
+    });
+
+    return container;
+}
+
 function renderTodoForm() {
     const form = document.createElement('form');
 
@@ -60,25 +79,6 @@ function renderTodoForm() {
     form.addEventListener('submit', handleTodoSubmit);
 
     return form;
-}
-
-function renderTodos() {
-    const container = document.createElement('div');
-    const project = getCurrentProject();
-
-    project.todos.forEach((todo, index) => {
-        const div = document.createElement('div');
-        div.classList.add('todo');
-        div.classList.add(todo.priority.toLowerCase());
-        if (todo.completed) {
-            div.classList.add('completed');
-        }
-
-        div.appendChild(createTodoHeader(todo, index));
-        container.appendChild(div);
-    });
-
-    return container;
 }
 
 function createTodoHeader(todo, index) {
