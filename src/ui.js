@@ -80,6 +80,19 @@ function createTodoHeader(todo, index) {
     return header;
 }
 
+function createDeleteButton(index) {
+    const btn = document.createElement('button');
+    btn.textContent = 'Delete';
+
+    btn.addEventListener('click', () => {
+        getCurrentProject(),removeTodo(index);
+        saveApp();
+        render();
+    });
+
+    return btn;
+}
+
 function handleTodoSubmit(e) {
     e.preventDefault();
 
