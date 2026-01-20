@@ -3,6 +3,7 @@ import {createTodo} from './todo.js';
 import {saveProjects, loadProjects} from './storage.js';
 
 const projects = [];
+let currentProjectIndex = 0;
 
 function loadApp() {
     const stored = loadProjects();
@@ -44,4 +45,12 @@ function getProjects() {
     return projects;
 };
 
-export {loadApp, saveApp, getProjects, addProject};
+function setCurrentProject(index) {
+    currentProjectIndex = index;
+};
+
+function getCurrentProject() {
+    return projects[currentProjectIndex];
+};
+
+export {loadApp, saveApp, getProjects, addProject, setCurrentProject, getCurrentProject};
