@@ -20,8 +20,10 @@ h1 {
 }
 
 .sidebar {
-    width: 220px;
+    width: 250px;
+    min-width: 250px;
     box-sizing: border-box;
+    overflow: visible;
 }
 
 .sidebar, 
@@ -31,20 +33,28 @@ h1 {
     border-radius: 6px;
 }
 
+.main {
+    margin-left: 260px;
+}
+
 .project-form {
     display: flex;
     gap: 6px;
     margin-bottom: 12px;
+    flex-wrap: nowrap;
 }
 
 .project-form input {
     flex-grow: 1;
+    min-width: 0;
     padding: 6px;
+    box-sizing: border-box;
 }
 
 .project-form button {
     padding: 6px 12px;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .project-item {
