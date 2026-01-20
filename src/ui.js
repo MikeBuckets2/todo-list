@@ -7,9 +7,20 @@ const app = document.querySelector('#app');
 function render() {
     app.innerHTML = '';
 
-    app.appendChild(renderProjects());
-    app.appendChild(renderTodoForm());
-    app.appendChild(renderTodos());
+    const layout = document.createElement('div');
+    layout.classList.add('layout');
+
+    const sidebar = document.createElement('div');
+    sidebar.classList.add('sidebar');
+    sidebar.appendChild(renderProjects());
+
+    const main = document.createElement('div');
+    main.classList.add('main');
+    main.appendChild(renderTodoForm());
+    main.appendChild(renderTodos());
+
+    layout.append(sidebar, main);
+    app.appendChild(layout);
 }
 
 function renderProjects() {
