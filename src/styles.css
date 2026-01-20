@@ -76,3 +76,15 @@ h1 {
     gap: 8px;
     align-items: center;
 }
+
+form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+form input, 
+form select, 
+form button {
+    padding: 6px;
+}
