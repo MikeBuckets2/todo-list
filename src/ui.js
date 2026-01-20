@@ -195,7 +195,16 @@ function renderTodoDetails(todo) {
         render();
     });
 
-    details.append(checkbox, priority);
+    const desc = document.createElement('textarea');
+    desc.value = todo.description || '';
+    desc.placeholder = 'Description...';
+    desc.rows = 3;
+    desc.addEventListener('input', e => {
+        todo.description = e.target.value;
+        saveApp();
+    });
+
+    details.append(checkbox, priority, desc);
     return details;
 }
 
@@ -210,6 +219,7 @@ function renderTodoForm() {
         <option>Medium</option>
         <option>High</option>
     </select>
+    <input name="description" placeholder="Description (optional)" />
     <button>Add</button>
     `;
 
@@ -225,7 +235,7 @@ function handleTodoSubmit(e) {
 
     const todo = createTodo(
         data.get('title'),
-        '',
+        data.get('description'),
         data.get('dueDate'),
         data.get('priority')
     );
