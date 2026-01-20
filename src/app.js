@@ -6,9 +6,9 @@ const projects = [];
 let currentProjectIndex = 0;
 
 function loadApp() {
-    const stored = loadProjects();
+    const storedProjects = loadProjects();
 
-    stored.forEach(projectData => {
+    storedProjects.forEach(projectData => {
         const project = createProject(projectData.name);
 
         projectData.todos.forEach(todoData => {
