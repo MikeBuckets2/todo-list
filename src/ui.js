@@ -143,7 +143,7 @@ function renderTodoForm() {
     const form = document.createElement('form');
 
     form.innerHTML = `
-    <input name ="title" placeholder="Title required />
+    <input name ="title" placeholder="Title" required />
     <input type="date" name="dueDate" required /> 
     <select name="priority">
         <option>Low</option>
