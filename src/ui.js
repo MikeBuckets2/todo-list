@@ -25,75 +25,26 @@ function render() {
 }
 
 function renderProjects() {
-    const container = document.createElement('div');
-    container.classList.add('project-list');
+  const container = document.createElement('div');
 
-    const form = document.createElement('form');
-    form.style.marginBottom = '12px';
-    form.innerHTML = `
-    <input name="projectName" placeholder="New Project" required />
-    <button>Create</button>
-    `;
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = new FormData(form).get('projectName').trim();
-        if (!name) return;
+  getProjects().forEach((project, index) => {
+    const btn = document.createElement('button');
+    btn.classList.add('project-btn');
+    btn.textContent = project.name;
 
-        addProject(name);
-        setCurrentProject(getProjects().length - 1);
-        render();
+    if (getCurrentProject() === project) {
+      btn.classList.add('active');
+    }
+
+    btn.addEventListener('click', () => {
+      setCurrentProject(index);
+      render();
     });
 
-    container.appendChild(form);
+    container.appendChild(btn);
+  });
 
-    getProjects().forEach((project, index) => {
-        const projectDiv = document.createElement('div');
-        projectDiv.style.display = 'flex';
-        projectDiv.style.justifyContent = 'space-between';
-        projectDiv.style.alignItems = 'center';
-        projectDiv.style.marginBottom = '6px';
-
-        const btn = document.createElement('button');
-        btn.classList.add('project-btn');
-        btn.textContent = project.name;
-
-        if (getCurrentProject() === project) {
-            btn.classList.add('active');
-        }
-
-        btn.addEventListener('click', () => {
-            setCurrentProject(index);
-            render();
-        });
-
-        projectDiv.appendChild(btn);
-
-        if (index !== 0) {
-            const delBtn = document.createElement('button');
-            delBtn.textContent = 'x';
-            delBtn.title = 'Delete Project';
-            delBtn.style.background = 'red';
-            delBtn.style.color = 'white';
-            delBtn.style.border = 'none';
-            delBtn.style.borderRadius = '4px';
-            delBtn.style.padding = '2px 6px';
-            delBtn.addEventListener('click', e => {
-                e.stopPropagation();
-                getProjects().splice(index, 1);
-
-                if (getCurrentProject() === project) {
-                    setCurrentProject(0);
-                }
-                saveApp();
-                render();
-            });
-            projectDiv.appendChild(delBtn);
-        }
-
-        container.appendChild(projectDiv);
-    });
-
-    return container;
+  return container;
 }
 
 function renderTodos() {
