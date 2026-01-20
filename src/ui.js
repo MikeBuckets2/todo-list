@@ -86,7 +86,8 @@ function createDeleteButton(index) {
     const btn = document.createElement('button');
     btn.textContent = 'Delete';
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', e => {
+        e.stopPropagation();
         getCurrentProject(),removeTodo(index);
         saveApp();
         render();
