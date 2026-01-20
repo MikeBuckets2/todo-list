@@ -25,10 +25,12 @@ function render() {
 
 function renderProjects() {
     const container = document.createElement('div');
+    container.classList.add('project-list');
 
     getProjects().forEach((project, index) => {
         const btn = document.createElement('button');
         btn.textContent = project.name;
+        btn.classList.add('project-btn');
 
         btn.addEventListener('click', () => {
             setCurrentProject(index);

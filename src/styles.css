@@ -30,3 +30,17 @@ h1 {
     padding: 12px;
     border-radius: 6px;
 }
+
+.project-btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 6px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+}
+
+.project-btn:hover {
+    background: #ddd;
+}
