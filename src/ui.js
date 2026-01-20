@@ -49,14 +49,19 @@ function renderTodoForm() {
     return form;
 }
 
-function renderTodos(project) {
-    project.todos.forEach(todo => {
-        project.todos.forEach(todo => {
-            const div = document.createElement('div');
-            div.textContent = `${todo.title} - ${format(new Date(todo.dueDate), 'MMM dd')}`;
-            appDiv.appendChild(div);
-        });
+function renderTodos() {
+    const container = document.createElement('div');
+    const project = getCurrentProject();
+
+    project.todos.forEach((todo, index) => {
+        const div = document.createElement('div');
+        div.classList.add('todo');
+
+        div.appendChild(createTodoHeader(todo, index));
+        container.appendChild(div);
     });
+
+    return container;
 }
 
 function handleTodoSubmit(e) {
