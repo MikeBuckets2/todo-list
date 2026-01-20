@@ -70,6 +70,9 @@ function renderTodos() {
         const div = document.createElement('div');
         div.classList.add('todo');
         div.classList.add(todo.priority.toLowerCase());
+        if (todo.completed) {
+            div.classList.add('completed');
+        }
 
         div.appendChild(createTodoHeader(todo, index));
         container.appendChild(div);

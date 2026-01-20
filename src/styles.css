@@ -64,3 +64,8 @@ h1 {
 .todo.low {
     border-left: 6px solid #2ecc71;
 }
+
+.todo.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
