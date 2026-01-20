@@ -64,6 +64,22 @@ function renderTodos() {
     return container;
 }
 
+function createTodoHeader(todo, index) {
+    const header = document.createElement('div');
+
+    const title = document.createElement('span');
+    title.textContent = `${todo.title} (${format(
+        new Date(todo.dueDate), 
+        'MMM dd'
+    )})`;
+
+    header.appendChild(title);
+    header.appendChild(createDeleteButton(index));
+    header.appendChild(createExpandButton(todo));
+
+    return header;
+}
+
 function handleTodoSubmit(e) {
     e.preventDefault();
 
