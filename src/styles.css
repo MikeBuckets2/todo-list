@@ -12,3 +12,21 @@ body {
 h1 {
     margin-bottom: 16px;
 }
+
+.layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 16px;
+}
+
+.sidebar {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.main {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+}
