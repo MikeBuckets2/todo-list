@@ -26,23 +26,45 @@ h1 {
     border-radius: 6px;
 }
 
-.project-btn {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 6px;
-    border: none;
-    background: #eee;
-    cursor: pointer;
+.project-form {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
 }
 
-.project-btn:hover {
-    background: #ddd;
+.project-form input {
+    flex-grow: 1;
+    padding: 6px;
+}
+
+.project-form button {
+    padding: 6px 12px;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.project-btn {
+    flex-grow: 1;
+    padding: 6px;
 }
 
 .project-btn.active {
     background: #bbb;
     font-weight: bold;
+}
+
+.project-delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6px;
+    cursor: pointer;
 }
 
 .todo {

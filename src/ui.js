@@ -27,7 +27,31 @@ function render() {
 function renderProjects() {
   const container = document.createElement('div');
 
+  const form = document.createElement('form');
+  form.classList.add('project-form');
+
+  form.innerHTML = `
+    <input name="projectName" placeholder="New Project" required />
+    <button type="submit">Add</button>
+  `;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = new FormData(form).get('projectName').trim();
+    if (!name) return;
+
+    addProject(name);
+    setCurrentProject(getProjects().length - 1); // switch to new project
+    saveApp();
+    render();
+  });
+
+  container.appendChild(form);
+
   getProjects().forEach((project, index) => {
+    const projectDiv = document.createElement('div');
+    projectDiv.classList.add('project-item');
+
     const btn = document.createElement('button');
     btn.classList.add('project-btn');
     btn.textContent = project.name;
@@ -41,7 +65,28 @@ function renderProjects() {
       render();
     });
 
-    container.appendChild(btn);
+    projectDiv.appendChild(btn);
+
+    if (index !== 0) {
+      const delBtn = document.createElement('button');
+      delBtn.textContent = '×';
+      delBtn.classList.add('project-delete-btn');
+      delBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        getProjects().splice(index, 1);
+
+        if (getCurrentProject() === project) {
+          setCurrentProject(0);
+        }
+
+        saveApp();
+        render();
+      });
+
+      projectDiv.appendChild(delBtn);
+    }
+
+    container.appendChild(projectDiv);
   });
 
   return container;
