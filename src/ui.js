@@ -123,6 +123,7 @@ function createExpandButton(todo) {
 
 function renderTodoDetails(todo) {
     const details = document.createElement('div');
+    details.classList.add('todo-details');
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
