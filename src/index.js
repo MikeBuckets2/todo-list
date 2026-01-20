@@ -1,5 +1,7 @@
 import './styles.css';
-import {addProject, getProjects} from './app.js';
+import {addProject, getProjects, loadApp} from './app.js';
+
+loadApp();
 
 if (getProjects().length === 0) {
     addProject('Default');
