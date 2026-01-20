@@ -52,3 +52,15 @@ h1 {
     border-radius: 4px;
     background: #fafafa;
 }
+
+.todo.high {
+    border-left: 6px solid #e74c3c;
+}
+
+.todo.medium {
+    border-left: 6px solid #f39c12;
+}
+
+.todo.low {
+    border-left: 6px solid #2ecc71;
+}

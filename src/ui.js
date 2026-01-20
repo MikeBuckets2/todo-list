@@ -69,6 +69,7 @@ function renderTodos() {
     project.todos.forEach((todo, index) => {
         const div = document.createElement('div');
         div.classList.add('todo');
+        div.classList.add(todo.priority.toLowerCase());
 
         div.appendChild(createTodoHeader(todo, index));
         container.appendChild(div);
