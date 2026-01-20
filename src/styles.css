@@ -40,6 +40,11 @@ h1 {
     background: #ddd;
 }
 
+.project-btn.active {
+    background: #bbb;
+    font-weight: bold;
+}
+
 .todo {
     border: 1px solid #ddd;
     padding: 8px;

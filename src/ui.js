@@ -32,6 +32,10 @@ function renderProjects() {
         btn.textContent = project.name;
         btn.classList.add('project-btn');
 
+        if (getCurrentProject() === project) {
+            btn.classList.add('active');
+        }
+
         btn.addEventListener('click', () => {
             setCurrentProject(index);
             render();
