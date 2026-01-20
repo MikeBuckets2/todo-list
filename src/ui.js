@@ -93,6 +93,17 @@ function createDeleteButton(index) {
     return btn;
 }
 
+function createExpandButton(todo) {
+    const btn = document.createElement('button');
+    btn.textContent = 'Details';
+
+    btn.addEventListener('click', () => {
+        btn.parentElement.appendChild(renderTodoDetails(todo));
+    });
+
+    return btn;
+}
+
 function handleTodoSubmit(e) {
     e.preventDefault();
 
